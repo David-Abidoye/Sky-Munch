@@ -53,7 +53,7 @@ p {
 }
 
 #container3 {
-    background-color: #ffffff; /* White background */
+    background-color: #ffffff00; /* Transparent background */
     text-align: center; /* Center the content */
     padding: 20px; /* Add padding inside the container */
     border-radius: 5px;
