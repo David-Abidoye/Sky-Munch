@@ -9,3 +9,9 @@
 #container3{
     height: 400px;
 }
+
+.fit-image{
+    width: 95%;
+    height: 95%;
+    object-fit: contain;
+}
