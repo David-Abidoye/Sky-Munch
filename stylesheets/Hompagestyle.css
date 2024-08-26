@@ -1,48 +1,78 @@
-#container1{
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+
+/* #container1{
     height: 380px;
-}
+} */
 
 #container2{
     height: 380px;
 }
 
 #container3{
-    height: 380px;
+    height: 410px;
 }
 
 body {
-    font-family: 'Century Gothic', 'Gothic', sans-serif; /* Apply Gothic font family */
-    background-color: #f4f7f7; /* Light background color for the whole page */
+    font-family: "Abel", 'Century Gothic', 'Gothic', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #FAFAFA; /* Light background color for the whole page */
 }
 
-h2, h3 {
-    font-weight: bold;
+
+
+h2 {
+    /* font-weight: bold; */
+    font-size: 40px;
     color: #333; /* Darker text color */
-    margin-bottom: 20px; /* Add space below headings */
+    width:fit-content;
+    background: linear-gradient(to right, #ff9e00 0%, red 35%, #b5007d 60%, #21429c 85%, #0071ff 100%); /* Gradient colors */
+    -webkit-background-clip: text; /* For WebKit browsers (Chrome, Safari) */
+    -webkit-text-fill-color: transparent; /* Hides default text color */
+    background-clip: text;
 }
 
-p {
-    margin: 10px 0; /* Space above and below paragraphs */
+h3 {
+    /* font-weight: bold; */
+    color: #333; /* Darker text color */
+    margin-bottom: 10px; /* Add space below headings */
+}
+
+
+#supercontainer1 {
+    background-color: #FAFAFA;
+}
+
+#supercontainer1 p {
+    font-size: large;
 }
 
 #container1 {
     /* background-color: #e9ecef; /*Light grey background for the container8*/
     padding: 20px; /* Add padding inside the container */
     border-radius: 5px; /* Slightly rounded corners */
-    margin-bottom: 20px; /* Space below the container */
 }
 
 #container1 h3 {
     margin-bottom: 20px;
 }
 
+#welcometext {
+    font-size: 45px;
+    width:fit-content;
+    background: linear-gradient(to right, #ff9e00 0%, red 35%, #b5007d 60%, #21429c 85%, #0071ff 100%); /* Gradient colors */
+    -webkit-background-clip: text; /* For WebKit browsers (Chrome, Safari) */
+    -webkit-text-fill-color: transparent; /* Hides default text color */
+    background-clip: text;
+}
+
 #container1 .form-control {
-    width: calc(100% - 120px); /* Responsive width for search bar */
+    width: 70%; /* Responsive width for search bar */
     margin-right: 10px;
 }
 
 #container1 .btn-outline-success {
-    background-color: #007bff; /* Blue background for the button */
+    background-color: #000ff5; /* Blue background for the button */
     color: #fff; /* White text color */
     border: none; /* No border */
 }
@@ -55,55 +85,81 @@ p {
 #container3 {
     background-color: #ffffff00; /* Transparent background */
     text-align: center; /* Center the content */
-    padding: 20px; /* Add padding inside the container */
-    border-radius: 5px;
+ /* Add padding inside the container */
+    padding-right: 20px;
 }
 
 #container3 img {
-    width: 95%;
-    height: 95%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
-.navbar {
-    min-height: 80px;
+/* #supercontainer2 {
+    background: linear-gradient(to right, #091153 0%, #0c1b87 100%);
+} */
+
+footer hr {
+    height: 5px; 
+    background: linear-gradient(to right, #ff9e00 0%, red 35%, #b5007d 60%, #21429c 85%, #0071ff 100%);
+    border: none;
 }
 
-.navbar-header {
-    height: 80x;
-    display: flex;
-    align-items: center;
+.navbar {
+    min-height: 70px;
 }
+
 
 .navbar-nav > li > a {
-    padding-top: 25px;
-    padding-bottom: 25px;
-    line-height: 30px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    line-height: 40px;
 }
 
-.navbar-toggle {
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-.navbar-header img {
-    height: 70px;
-    width: auto;
+.navbar-logo-container {
+    display: inline-block;
+    margin-left: 5px; /* Adjust margin as needed */
 }
 
 .navbar-header {
-    display: flex;
-    align-items: center; 
-    height: 80px; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 40px;
 }
 
-.navbar-logo {
-    height: 40px; 
+
+.navbar-header img {
+    height: 50px;
     width: auto;
 }
 
+
 .navbar {
-    background-color: #ffffff; /* Set the background color to white */
-    border: none; /* Optionally remove the border if you want a clean look */
+    background-color: #ffffff; 
+    border: none; 
 }
+
+.navbar .glyphicon {
+    margin-right: 3px;
+}
+
+@media (max-width: 767px) {
+    /* Reset padding for navbar items in collapsed mobile view */
+    .navbar-nav > li > a {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        line-height: 30px;
+    }
+
+    .navbar-logo-container {
+        margin-left: 15px; /* Reset margin for centered alignment */
+    }
+
+    #container1 .form-control {
+    width:  95%; /* Responsive width for search bar */
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+}
+
 
