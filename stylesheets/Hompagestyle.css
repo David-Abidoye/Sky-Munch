@@ -12,6 +12,41 @@
     height: 410px;
 }
 
+@font-face {
+    font-family: 'Sky Text';
+    src: url('fonts/SkyText-Regular_3650438634.ttf') format(truetype);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sky Text';
+    src: url('fonts/SkyText-Light_2261402382.ttf') format(truetype);
+    font-weight: light;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sky Text';
+    src: url('fonts/SkyText-Medium_1708035704.ttf') format(truetype);
+    font-weight: medium;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sky Text';
+    src: url('fonts/SkyText-Bold_1830760342.ttf') format(truetype);
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sky Text';
+    src: url('fonts/SkyText-Italic_2100815725.ttf') format(truetype);
+    font-weight: normal;
+    font-style: italic;
+}
+
 body {
     font-family: "Abel", 'Century Gothic', 'Gothic', sans-serif;
     font-weight: 400;
