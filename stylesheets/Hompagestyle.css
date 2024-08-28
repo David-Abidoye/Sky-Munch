@@ -4,6 +4,10 @@
     height: 380px;
 } */
 
+:root {
+    --sky-gradient: linear-gradient(to right, #ff9e00 0%, red 35%, #b5007d 60%, #21429c 85%, #0071ff 100%); /* Gradient colors */
+}
+
 #container2{
     height: 380px;
 }
@@ -61,7 +65,7 @@ h2 {
     font-size: 40px;
     color: #333; /* Darker text color */
     width:fit-content;
-    background: linear-gradient(to right, #ff9e00 0%, red 35%, #b5007d 60%, #21429c 85%, #0071ff 100%); /* Gradient colors */
+    background: var(--sky-gradient);
     -webkit-background-clip: text; /* For WebKit browsers (Chrome, Safari) */
     -webkit-text-fill-color: transparent; /* Hides default text color */
     background-clip: text;
@@ -95,7 +99,7 @@ h3 {
 #welcometext {
     font-size: 45px;
     width:fit-content;
-    background: linear-gradient(to right, #ff9e00 0%, red 35%, #b5007d 60%, #21429c 85%, #0071ff 100%); /* Gradient colors */
+    background: var(--sky-gradient);
     -webkit-background-clip: text; /* For WebKit browsers (Chrome, Safari) */
     -webkit-text-fill-color: transparent; /* Hides default text color */
     background-clip: text;
@@ -136,7 +140,7 @@ h3 {
 
 footer hr {
     height: 5px; 
-    background: linear-gradient(to right, #ff9e00 0%, red 35%, #b5007d 60%, #21429c 85%, #0071ff 100%);
+    background: var(--sky-gradient);
     border: none;
 }
 
