@@ -1,89 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="stylesheets/Hompagestyle.css">
-</head>
-<body>
-    <!-- Banner at top of screen -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header"> 
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> 
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-logo-container" href="#"><img src="images/Logo.png" alt="Sky munch logo" width="110" height="40" class="navbar-logo"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span>LOGIN/SIGNUP</a></li>
-                    <li><a href="#checkout"><span class="glyphicon glyphicon-shopping-cart"></span>CHECKOUT</a></li>
-                    <li><a href="#profile"><span class="glyphicon glyphicon-user"></span>PROFILE</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+{% extends "layout.html" %}
 
-    <!-- First Container -->
-    <div class="container-fluid 1" id="supercontainer1">
-        <div class="row">
-            <div id="container1" class="col-sm-8">
-                <h1 id="welcometext" class="text-left">Welcome to Sky Munch!</h1>
-                <br>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search Restaurants" aria-label="Search Restaurants" >
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-                <br>
-                <p>Fuel your productivity without skipping a beat. Sky Munch is your go-to destination for delicious meals delivered right to your desk, so you can keep powering through your workday with ease.</p>
-                <p>Browse our curated selection of top workplace eateries, pick your favorite dishes, and let us handle the rest. With just a few clicks, your meal will be on its way, delivered right to you—no need to interrupt your flow or leave your desk.</p>
-                <p>Stay focused and energized while we take care of your dining needs.</p>
-                <br>
-                <p>Sky Munch: <span style="font-style: italic;">Where great work meets great food!</span></p>
-                    
-            </div>
-            <!-- Third Container -->
-            <div id="container3" class="col-sm-4">
-                <img src="images/Delivery.png" alt="Delivery available">
-            </div>
+{% block content %}
+<!-- First Container -->
+<div class="container-fluid 1" id="supercontainer1">
+    <div class="row">
+        <div id="container1" class="col-sm-8">
+            <h1 id="welcometext" class="text-left">Welcome to Sky Munch!</h1>
+            <br>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search Restaurants" aria-label="Search Restaurants" >
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <br>
+            <p>Fuel your productivity without skipping a beat. Sky Munch is your go-to destination for delicious meals delivered right to your desk, so you can keep powering through your workday with ease.</p>
+            <p>Browse our curated selection of top workplace eateries, pick your favorite dishes, and let us handle the rest. With just a few clicks, your meal will be on its way, delivered right to you—no need to interrupt your flow or leave your desk.</p>
+            <p>Stay focused and energized while we take care of your dining needs.</p>
+            <br>
+            <p>Sky Munch: <span style="font-style: italic;">Where great work meets great food!</span></p>
+        </div>
+        <!-- Third Container -->
+        <div id="container3" class="col-sm-4">
+            <img src="../static/images/Delivery.png" alt="Delivery available">
         </div>
     </div>
+</div>
 
-     <!-- Second Container -->
-     <div class="container-fluid 2" id="supercontainer2">
-        <h2 class="text-left">Restaurants</h2> 
-        <div class="row">
-            <div class="col-sm-3">
-                <h3>The Pavilion</h3>
-                <a href="#"><img src="images/Pavilion.png" class="pav-restaurant" width="100%" alt="Pavilion Restaurant"></a>
-            </div>
-            <div class="col-sm-3">
-                <h3>The Dining Room</h3>
-                <a href="#"><img src="images/The Dining Room.png" class="din-restaurant" width="100%" alt="The Dining Room Restaurant"></a>
-            </div>
-            <div class="col-sm-3">
-                <h3>The Garden</h3>
-                <a href="#"><img src="images/The Garden.png" class="garden-restaurant" width="100%" alt="The Garden Restaurant"></a>
-            </div>
-            <div class="col-sm-3">
-                <h3>The Restaurant</h3>
-                <a href="#"><img src="images/The Restaurant.png" class="res-restaurant" width="100%" alt="The Restaurant"></a>
-            </div>  
+<!-- Second Container -->
+<div class="container-fluid 2" id="supercontainer2">
+    <h2 class="text-left">Restaurants</h2> 
+    <div class="row">
+        <div class="col-sm-3">
+            <h3>The Pavilion</h3>
+            <a href="#"><img src="../static/images/Pavilion.png" class="pav-restaurant" width="100%" alt="Pavilion Restaurant"></a>
         </div>
+        <div class="col-sm-3">
+            <h3>The Dining Room</h3>
+            <a href="#"><img src="../static/images/The Dining Room.png" class="din-restaurant" width="100%" alt="The Dining Room Restaurant"></a>
+        </div>
+        <div class="col-sm-3">
+            <h3>The Garden</h3>
+            <a href="#"><img src="../static/images/The Garden.png" class="garden-restaurant" width="100%" alt="The Garden Restaurant"></a>
+        </div>
+        <div class="col-sm-3">
+            <h3>The Restaurant</h3>
+            <a href="#"><img src="../static/images/The Restaurant.png" class="res-restaurant" width="100%" alt="The Restaurant"></a>
+        </div>  
     </div>
-    
-    <footer class="container-fluid 4 text-center">
-        <hr>
-        <h4>&copy; 2024 Sky Munch Project <a href="http://www.sky.com" target="_blank">www.sky.com</a></h4>
-    </footer>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-</html>
+</div>
+{% endblock %}
