@@ -5,7 +5,7 @@
 } */
 
 :root {
-    --sky-gradient: linear-gradient(to right, #ff9e00 0%, red 35%, #b5007d 60%, #21429c 85%, #0071ff 100%); /* Gradient colors */
+    --sky-gradient: linear-gradient(#0071ff 100%); /* Gradient colors */
 }
 
 #container2{
@@ -198,7 +198,10 @@ footer hr {
     width:  95%; /* Responsive width for search bar */
     margin-right: 10px;
     margin-bottom: 5px;
-}
+    }
+
+
+    
 }
 
 
