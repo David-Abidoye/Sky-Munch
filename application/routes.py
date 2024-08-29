@@ -13,8 +13,6 @@ def login():
     return render_template('login.html')
 
 
-"""
-@app.route('/welcome/<name>')
-def welcome(name):
-    return render_template('welcome.html', name=name, group='Everyone')
-"""
+@app.route('/menu')
+def menu():
+    return render_template('menu.html', title='Check the Menu')
