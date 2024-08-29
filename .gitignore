@@ -1,3 +1,5 @@
 .env
-config.js
+.js
 .DS_Store
+/.venv
+/.idea
