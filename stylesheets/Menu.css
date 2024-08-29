@@ -7,6 +7,22 @@
 }
 
 
+
+/* .large-container{
+    height: 100vh;
+}
+
+.large-container img{
+    object-fit: contain;
+}
+
+.small-container{ 
+    height: 20%;
+    border: 1px solid #dee2e6;
+    margin-bottom: 5px;
+} */
+
+
 @font-face {
     font-family: 'Sky Text';
     src: url('fonts/SkyText-Regular_3650438634.ttf') format(truetype);
