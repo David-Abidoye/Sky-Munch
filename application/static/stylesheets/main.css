@@ -200,6 +200,10 @@ footer hr {
     margin-bottom: 5px;
     }
 
+    .bottom-right-container .button{
+        flex: 1;
+        width: 100%;
+    }
 
     
 }
