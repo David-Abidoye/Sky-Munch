@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+
+
+
+:root {
+    --sky-gradient: linear-gradient(to right, #ff9e00 0%, red 35%, #b5007d 60%, #21429c 85%, #0071ff 100%); /* Gradient colors */
+}
+
+
+@font-face {
+    font-family: 'Sky Text';
+    src: url('fonts/SkyText-Regular_3650438634.ttf') format(truetype);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sky Text';
+    src: url('fonts/SkyText-Light_2261402382.ttf') format(truetype);
+    font-weight: light;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sky Text';
+    src: url('fonts/SkyText-Medium_1708035704.ttf') format(truetype);
+    font-weight: medium;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sky Text';
+    src: url('fonts/SkyText-Bold_1830760342.ttf') format(truetype);
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sky Text';
+    src: url('fonts/SkyText-Italic_2100815725.ttf') format(truetype);
+    font-weight: normal;
+    font-style: italic;
+}
+
+body {
+    font-family: "Abel", 'Century Gothic', 'Gothic', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #FAFAFA; /* Light background color for the whole page */
+}
+
+
+
+#welcometext {
+    font-size: 45px;
+    width:fit-content;
+    background: var(--sky-gradient);
+    -webkit-background-clip: text; /* For WebKit browsers (Chrome, Safari) */
+    -webkit-text-fill-color: transparent; /* Hides default text color */
+    background-clip: text;
+}
+
+footer hr {
+    height: 5px; 
+    background: var(--sky-gradient);
+    border: none;
+}
+
+.navbar {
+    min-height: 70px;
+}
+
+
+.navbar-nav > li > a {
+    padding-top: 15px;
+    padding-bottom: 10px;
+    line-height: 40px;
+}
+
+.navbar-logo-container {
+    display: inline-block;
+    margin-left: 5px; /* Adjust margin as needed */
+}
+
+.navbar-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 40px;
+}
+
+
+.navbar-header img {
+    height: 50px;
+    width: auto;
+}
+
+
+.navbar {
+    background-color: #ffffff; 
+    border: none; 
+}
+
+.navbar .glyphicon {
+    margin-right: 3px;
+}
+
+@media (max-width: 767px) {
+    /* Reset padding for navbar items in collapsed mobile view */
+    .navbar-nav > li > a {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        line-height: 30px;
+    }
+
+    .navbar-logo-container {
+        margin-left: 15px; /* Reset margin for centered alignment */
+    }
+
+}
+
+
