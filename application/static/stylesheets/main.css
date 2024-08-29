@@ -201,4 +201,37 @@ footer hr {
 }
 }
 
+/* deliverystatus.css */
+
+/* Basic styling for the body to center the content */
+body {
+    font-family:  Sky Text, sans-serif; 
+    background-color: #f0f0f0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin: 0; 
+}
+
+/* Styles for the container that holds all the content */
+.container {
+    text-align: center; 
+    background-color: #ffffff; /* White background for the container */
+    padding: 30px; /* Padding around the content */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+}
+
+/* Styles for the main heading */
+h1 {
+    color: var(--sky-gradient); /* Dark gray color for the heading */
+}
+
+/* Styles for the timer */
+#timer {
+    font-size: 2em; /* Larger font size for visibility */
+    color: var(--sky-gradient);
+    margin-top: 20px; /* Space above the timer */
+}
 

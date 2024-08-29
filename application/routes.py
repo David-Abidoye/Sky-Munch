@@ -16,3 +16,8 @@ def login():
 @app.route('/menu')
 def menu():
     return render_template('menu.html', title='Check the Menu')
+
+
+@app.route('/deliverystatus')
+def deliverystatus():
+    return render_template('deliverystatus.html', title='Delivery in Progress')
