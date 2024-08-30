@@ -31,7 +31,7 @@ def processing():
         return redirect('/')
     
     if session['CSRFToken'] != request.form.get('CSRFToken'):
-        clear_session()
+        session.clear()
         return redirect('/error')
 
     session['email'] = request.form.get('email')
@@ -43,16 +43,6 @@ def processing():
     session['office_area'] = request.form.get('office_area')
     session['additional_info'] = request.form.get('additional_info')
     return redirect(url_for('form_data_display'))
-
-def clear_session():
-    session['email'] = 'email'
-    session['first_name'] = 'first_name'
-    session['last_name'] = 'last_name'
-    session['phone_no'] = 'phone_no'
-    session['building_name'] = 'building_name'
-    session['floor'] = 'floor'
-    session['office_area'] = 'office_area'
-    session['additional_info'] = 'additional_info'
 
 @app.route('/form_data_display')
 def form_data_display():
