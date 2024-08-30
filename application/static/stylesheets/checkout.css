@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+
+/* #container1{
+    height: 380px;
+} */
+
+:root {
+    --sky-gradient: linear-gradient(to right, #ff9e00 0%, red 35%, #b5007d 60%, #21429c 85%, #0071ff 100%); /* Gradient colors */
+}
+
+
+#order_button{
+    background-color: #000ff5; /* Blue background for the button */
+    color: #fff; /* White text color */
+    border: none; /* No border */
+}
+
+#order_button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    color: #fff;
+}
+
+h2 {
+    /* font-weight: bold; */
+    font-size: 40px;
+    color: #333; /* Darker text color */
+    width:fit-content;
+    background: var(--sky-gradient);
+    -webkit-background-clip: text; /* For WebKit browsers (Chrome, Safari) */
+    -webkit-text-fill-color: transparent; /* Hides default text color */
+    background-clip: text;
+}
+
+.table-no-bottom-border .no-line{
+    border-top: 1px;
+}
+
+
+@font-face {
+    font-family: 'Sky Text';
+    src: url('fonts/SkyText-Regular_3650438634.ttf') format(truetype);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sky Text';
+    src: url('fonts/SkyText-Light_2261402382.ttf') format(truetype);
+    font-weight: light;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sky Text';
+    src: url('fonts/SkyText-Medium_1708035704.ttf') format(truetype);
+    font-weight: medium;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sky Text';
+    src: url('fonts/SkyText-Bold_1830760342.ttf') format(truetype);
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sky Text';
+    src: url('fonts/SkyText-Italic_2100815725.ttf') format(truetype);
+    font-weight: normal;
+    font-style: italic;
+}
+
+body {
+    font-family: "Abel", 'Century Gothic', 'Gothic', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #FAFAFA; /* Light background color for the whole page */
+}
+
+footer hr {
+    height: 5px; 
+    background: var(--sky-gradient);
+    border: none;
+}
+
+.navbar {
+    min-height: 70px;
+}
+
+
+.navbar-nav > li > a {
+    padding-top: 15px;
+    padding-bottom: 10px;
+    line-height: 40px;
+}
+
+.navbar-logo-container {
+    display: inline-block;
+    margin-left: 5px; /* Adjust margin as needed */
+}
+
+.navbar-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 40px;
+}
+
+
+.navbar-header img {
+    height: 50px;
+    width: auto;
+}
+
+
+.navbar {
+    background-color: #ffffff; 
+    border: none; 
+}
+
+.navbar .glyphicon {
+    margin-right: 3px;
+}
+
+@media (max-width: 767px) {
+    /* Reset padding for navbar items in collapsed mobile view */
+    .navbar-nav > li > a {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        line-height: 30px;
+    }
+
+    .navbar-logo-container {
+        margin-left: 15px; /* Reset margin for centered alignment */
+    }
+
+    #container1 .form-control {
+    width:  95%; /* Responsive width for search bar */
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+}
+
+
+/* #table-no-bottom-border {
+    border: 1px solid #000;
+    border-radius: 5px;
+    overflow: hidden;
+    width:100%; 
+  } */
+  
+/* #table-no-bottom-border td {
+    border-top: 0;
+    border-bottom: 0;
+} */
+
+
+
+/* #table-no-bottom-border th:last-child,
+#table-no-bottom-border td:last-child {
+    border-right: 0;
+} */
