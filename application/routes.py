@@ -22,7 +22,7 @@ def menu():
 
 @app.route('/checkout')
 def checkout():
-    session['CSRFToken'] = randint(1<<15, (1<<16)-1)
+    session['CSRFToken'] = str(randint(1<<15, (1<<16)-1))
     return render_template('checkout.html', title='Complete Your Purchase', css='checkout', CSRFToken=session['CSRFToken'])
 
 @app.route('/processing', methods=['GET', 'POST'])
