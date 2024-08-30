@@ -10,7 +10,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url('../loginbackground.png') no-repeat center center/cover;
     /* `no-repeat` prevents the image from repeating, 
        `center center` centers it on the page, 
        `cover` ensures the image covers the whole page */
