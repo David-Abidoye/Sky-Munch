@@ -16,3 +16,8 @@ def login():
 @app.route('/menu')
 def menu():
     return render_template('menu.html', title='Check the Menu', css='main')
+
+
+@app.route('/checkout')
+def checkout():
+    return render_template('checkout.html', title='Complete Your Purchase', css='checkout')
