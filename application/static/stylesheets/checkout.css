@@ -35,6 +35,24 @@ h2 {
     border-top: 1px;
 }
 
+label {
+    font-size: medium;
+}
+
+td {
+    font-size: medium;
+}
+
+.delivery_div {
+    padding-bottom: 10px;
+    padding-right: 20px;
+}
+
+.order_div {
+    padding-bottom: 20px;
+    padding-right: 20px;
+}
+
 
 @font-face {
     font-family: 'Sky Text';
