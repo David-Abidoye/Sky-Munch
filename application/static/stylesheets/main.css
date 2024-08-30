@@ -343,3 +343,134 @@ footer hr {
 }
 
 
+/* Centered content and progress bar styling */
+.main-container {
+    display: flex; /* Use Flexbox to center content */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    min-height: calc(100vh - 100px); /* Adjust height to leave space for the footer, assuming footer height is 100px */
+    flex-direction: column; /* Ensure content stacks vertically */
+    text-align: center; /* Center-align text within the container */
+    padding-bottom: 50px; /* Add some space at the bottom to avoid overlapping with the footer */
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content inside the wrapper */
+    justify-content: center; /* Center content inside the wrapper */
+    width: 100%;
+}
+
+/* Combined White Box with Drop Shadow */
+.white-box {
+    background-color: #fff; /* White background for the box */
+    padding: 40px 100px; /* Increased padding inside the box with more on the sides */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Drop shadow effect */
+    max-width: 1000px; /* Increased maximum width for the box */
+    margin: 20px; /* Margin around the box */
+    text-align: center; /* Center-align text */
+}
+
+/* GIF Styling */
+.gif-container {
+    text-align: center; /* Center the GIF container */
+    margin: 30px 0; /* Add some margin above and below the GIF */
+}
+
+.food-delivery-gif {
+    max-width: 300px; /* Adjust the size of the new GIF for better visibility */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Make sure the image is treated as a block element for centering */
+    margin: 0 auto; /* Center the GIF horizontally */
+}
+
+/* Styling for Order Details List */
+.order-details-list {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Corrected padding value */
+    margin: 50px 0; /* Add margin for spacing */
+    text-align: left; /* Left-align text inside the list items */
+    display: inline-block; /* Align the list to the center */
+    font-size: medium;
+
+}
+
+/* Center-align the heading for the progress section */
+.white-box h2 {
+    text-align: center; /* Ensure the heading is center-aligned */
+    margin-bottom: 30px; /* Add some margin below the heading */
+    width: 100%; /* Ensure it spans the entire box width */
+    display: flex; /* Use flexbox to center align */
+    justify-content: center; /* Center-align the text */
+}
+
+/* Delivery Progress Bar Styles */
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 0; /* Increased margin for more spacing */
+    width: 100%;
+    max-width: 1000px; /* Larger max width to accommodate bigger circles */
+    position: relative;
+}
+
+.progress-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 6px; /* Thicker progress bar line */
+    background-color: #d3d3d3;
+    z-index: -1;
+    transform: translateY(-50%);
+}
+
+/* Larger and thicker progress bar line */
+.progress {
+    background-color: #007bff; /* Blue color for the progress bar */
+    height: 6px; /* Thicker line */
+    width: 0%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    transition: width 0.4s ease;
+}
+
+/* circles and text */
+.circle {
+    width: 70px; /* Increased width for larger circles */
+    height: 70px; /* Increased height for larger circles */
+    border-radius: 50%;
+    background-color: #fff;
+    border: 5px solid #d3d3d3; /* Thicker border */
+    display: flex;
+    justify-content: center; /* Center text inside the circles */
+    align-items: center; /* Center text inside the circles */
+    font-size: 1rem; /* Larger font size for text inside circles */
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    padding: 10px; /* Added padding for better spacing inside the circle */
+    text-align: center; /* Ensure the text inside the circles is center-aligned */
+}
+
+.circle.active {
+    border-color: #007bff; /* Blue color for active circles */
+    font-size: 1.5rem; /* Font size for active circles */
+    text-align: center; /* Center-align text inside active circles */
+}
+
+/* Larger font size for circle labels */
+.progress-container .circle::after {
+    content: attr(data-label); /* Use data-label for text */
+    font-size: 1.5rem; /* Larger font size for text */
+    margin-top: 0px; /* More space between circle and text */
+    display: block; /* Make sure text is displayed below the circle */
+    color: #333; /* Darker text color for readability */
+    text-align: center; /* Center-align text */;
+}

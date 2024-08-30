@@ -48,11 +48,11 @@ def processing():
     session['floor'] = sanitize_input(request.form.get('floor'))
     session['office_area'] = sanitize_input(request.form.get('office_area'))
     session['additional_info'] = sanitize_input(request.form.get('additional_info'))
-    return redirect(url_for('form_data_display'))
+    return redirect(url_for('delivery'))
 
-@app.route('/form_data_display')
-def form_data_display():
-    return render_template('form_data_display.html', data=session, title='Test', css='main')
+@app.route('/delivery')
+def delivery():
+    return render_template('delivery.html', data=session, title='Check on Delivery', css='main')
 
 # Error handling routes
 @app.errorhandler(404)
