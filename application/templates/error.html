@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!--Container-->
+<div class="container-fluid" style="margin: 10%;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.473);
+    padding: 50px;">
+    <div class="btn-container" style="height: 100%;">
+        <h1 style="text-align: center;
+        font-family:Sky Text;">
+        Error {{error_type}}</h1>
+        <br><br>
+        <p style="text-align: center;
+        font-family: Sky Text;
+        font-weight: normal;">
+        {% if error_type == 404 %}
+            Uh oh! It seems you've tried to load a page that doesn't exist.
+        {% elif error_type == 500 %}
+            Oops! Something went wrong on our end.
+        {% else %}
+            An unexpected error has occurred.
+        {% endif %}
+        <br>Please return to the <a href="/">homepage</a>.</p>
+    </div>
+</div>
+{% endblock %}
