@@ -2,6 +2,7 @@ from flask import render_template, request, redirect, url_for, session
 
 from application import app
 
+from random import randint
 
 app.secret_key = 'SkyMunch' # Replaced with a key that is stored external to codebase.
 
@@ -21,13 +22,18 @@ def menu():
 
 @app.route('/checkout')
 def checkout():
-    return render_template('checkout.html', title='Complete Your Purchase', css='checkout')
+    session['CSRFToken'] = randint(1<<15, (1<<16)-1)
+    return render_template('checkout.html', title='Complete Your Purchase', css='checkout', CSRFToken=session['CSRFToken'])
 
 @app.route('/processing', methods=['GET', 'POST'])
 def processing():
     if request.method != 'POST':
         return redirect('/')
     
+    if session['CSRFToken'] != request.form.get('CSRFToken'):
+        clear_session()
+        return redirect('/error')
+
     session['email'] = request.form.get('email')
     session['first_name'] = request.form.get('first_name')
     session['last_name'] = request.form.get('last_name')
@@ -37,6 +43,16 @@ def processing():
     session['office_area'] = request.form.get('office_area')
     session['additional_info'] = request.form.get('additional_info')
     return redirect(url_for('form_data_display'))
+
+def clear_session():
+    session['email'] = 'email'
+    session['first_name'] = 'first_name'
+    session['last_name'] = 'last_name'
+    session['phone_no'] = 'phone_no'
+    session['building_name'] = 'building_name'
+    session['floor'] = 'floor'
+    session['office_area'] = 'office_area'
+    session['additional_info'] = 'additional_info'
 
 @app.route('/form_data_display')
 def form_data_display():
