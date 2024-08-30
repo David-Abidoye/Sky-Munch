@@ -6,8 +6,28 @@
     <div class="row h-100">
         <div class="col-lg-8 left-container">
             <!-- add content for menu -->
-            <a href="#"><img src="../static/images/Menu.png" class="Menu-img" width="100%" height = '100%' alt="Menu for Restaurant"></a>
+            <a href="#"><img src="images/Menu.png" class="Menu-img" width="100%" height = '100%' alt="Menu for Restaurant"></a>
+            <!-- overlay pics -->
+             <img src="images/Add_to_order.png" class="overlay-img" id="triggerImage" alt="Overlay image">
+             <img src="images/Add_to_order1.png" class="overlay-img1" alt="Overlay image">
+             <img src="images/Add_to_order2.png" class="overlay-img2" alt="Overlay image">
+             <img src="images/Add_to_order3.png" class="overlay-img3" alt="Overlay image">
+             <img src="images/Add_to_order4.png" class="overlay-img4" alt="Overlay image">
         </div>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <!-- Modal Title -->
+                <h3 id="modalTitle">Order Confirmation</h3>
+                <br>
+                <!-- Modal Text Message -->
+                <p id="modalText">Your order has been successfully added to the cart!</p>
+            </div>
+        </div>
+
+
+
         <div class="col-lg-4 d-flex flex-column p-0">
             <div class="top-right-container">
                 <!-- Add content -->
