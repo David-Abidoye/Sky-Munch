@@ -6,38 +6,38 @@
     <div class="row">
         <div class="col-sm-8">
             <h2>Delivery details</h2>
-            <form id="delivery_form" action="#">
+            <form id="delivery_form" action="/processing" method="POST">
                 <div class="form-group">
                   <label for="email">Email for Order Confirmation *</label>
-                  <input type="email" class="form-control" id="email">
+                  <input type="email" class="form-control" id="email" name="email">
                 </div>
                 <div class="form-group">
                   <label for="first_name">First name *</label>
-                  <input type="text" class="form-control" id="first_name">
+                  <input type="text" class="form-control" id="first_name" name="first_name">
                 </div>
                 <div class="form-group">
                     <label for="last_name">Last name *</label>
-                    <input type="text" class="form-control" id="last_name">
+                    <input type="text" class="form-control" id="last_name" name="last_name">
                 </div>
                 <div class="form-group">
                     <label for="phone_no">Phone *</label>
-                    <input type="text" class="form-control" id="phone_no">
+                    <input type="text" class="form-control" id="phone_no" name="phone_no">
                 </div>
                 <div class="form-group">
                     <label for="building_name">Building Name *</label>
-                    <input type="text" class="form-control" id="building_name">
+                    <input type="text" class="form-control" id="building_name" name="building_name">
                   </div>
                   <div class="form-group">
                       <label for="floor">Floor (Ground, 1st, etc.)*</label>
-                      <input type="text" class="form-control" id="floor">
+                      <input type="text" class="form-control" id="floor" name="floor">
                   </div>
                   <div class="form-group">
                       <label for="office_area">Office/Table No.</label>
-                      <input type="text" class="form-control" id="office_area">
+                      <input type="text" class="form-control" id="office_area" name="office_area">
                   </div>
                   <div class="form-group">
                     <label for="additonal_info">Additional Information</label>
-                    <input type="text" class="form-control input-lg" id="additonal_info">
+                    <input type="text" class="form-control input-lg" id="additonal_info" name="additional_info">
                   </div>
                 <div class="checkbox">
                   <label><input type="checkbox"> Remember me</label>

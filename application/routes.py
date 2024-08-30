@@ -1,7 +1,9 @@
-from flask import render_template
+from flask import render_template, request, redirect, url_for, session
 
 from application import app
 
+
+app.secret_key = 'SkyMunch'
 
 @app.route('/')
 @app.route('/home')
@@ -20,6 +22,25 @@ def menu():
 @app.route('/checkout')
 def checkout():
     return render_template('checkout.html', title='Complete Your Purchase', css='checkout')
+
+@app.route('/processing', methods=['GET', 'POST'])
+def processing():
+    if request.method != 'POST':
+        return redirect('/')
+    
+    session['email'] = request.form.get('email')
+    session['first_name'] = request.form.get('first_name')
+    session['last_name'] = request.form.get('last_name')
+    session['phone_no'] = request.form.get('phone_no')
+    session['building_name'] = request.form.get('building_name')
+    session['floor'] = request.form.get('floor')
+    session['office_area'] = request.form.get('office_area')
+    session['additional_info'] = request.form.get('additional_info')
+    return redirect(url_for('form_data_display'))
+
+@app.route('/form_data_display')
+def form_data_display():
+    return render_template('form_data_display.html', data=session, title='Test', css='main')
 
 # Error handling routes
 @app.errorhandler(404)
