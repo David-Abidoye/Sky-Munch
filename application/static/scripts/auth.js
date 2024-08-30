@@ -4,33 +4,30 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
   signOut,
+  onAuthStateChanged  
 } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
 
 // Define the Firebase configuration object
-import { firebaseConfig } from './config.js'
+import { firebaseConfig } from './config.js';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Cache the DOM elements
-const email = document.getElementById("email");
-const password = document.getElementById("password");
-const signUpBtn = document.getElementById("signUpBtn");
-const signInBtn = document.getElementById("signInBtn");
-const signOutBtn = document.getElementById("signOutBtn");
-const login = document.getElementById("login");
-const authPart = document.getElementById("authPart");
-
-// Hide the top secret part initially
-authPart.style.display = "none";
+const signInEmailInput = document.querySelector(".sign-in-form .input-field input[type='email']");
+const signInPasswordInput = document.querySelector(".sign-in-form .input-field input[type='password']");
+const signUpEmailInput = document.querySelector(".sign-up-form .input-field input[type='email']");
+const signUpPasswordInput = document.querySelector(".sign-up-form .input-field input[type='password']");
+const signUpBtn = document.querySelector(".sign-up-form .btn");
+const signInBtn = document.querySelector(".sign-in-form .btn");
+const signOutBtn = document.getElementById("sign-out-btn");
 
 // Signup function
 const signUp = async () => {
-  const signUpEmail = email.value;
-  const signUpPassword = password.value;
+  const signUpEmail = signUpEmailInput.value;
+  const signUpPassword = signUpPasswordInput.value;
   try {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
@@ -38,19 +35,19 @@ const signUp = async () => {
       signUpPassword
     );
     const user = userCredential.user;
-    console.log(user);
+    console.log("User signed up:", user);
     alert("User created successfully");
   } catch (error) {
     const { code, message } = error;
-    console.log(code, message);
+    console.log("Sign up error:", code, message);
     alert(message);
   }
 };
 
 // Signin function
 const signIn = async () => {
-  const signInEmail = email.value;
-  const signInPassword = password.value;
+  const signInEmail = signInEmailInput.value;
+  const signInPassword = signInPasswordInput.value;
   try {
     const userCredential = await signInWithEmailAndPassword(
       auth,
@@ -58,31 +55,15 @@ const signIn = async () => {
       signInPassword
     );
     const user = userCredential.user;
-    console.log(user);
+    console.log("User signed in:", user);
     alert("User signed in successfully");
+    window.location.href = "/"; // Redirect to the homepage
   } catch (error) {
     const { code, message } = error;
-    console.log(code, message);
+    console.log("Sign in error:", code, message);
     alert(message);
   }
 };
-
-// Check auth state
-const checkAuthState = () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      login.style.display = "none";
-      authPart.style.display = "flex";
-      console.log("User is signed in");
-    } else {
-      login.style.display = "block";
-      authPart.style.display = "none";
-      console.log("User is signed out");
-    }
-  });
-};
-
-checkAuthState();
 
 // Signout function
 const userSignOut = async () => {
@@ -92,12 +73,53 @@ const userSignOut = async () => {
     alert("User signed out successfully");
   } catch (error) {
     const { code, message } = error;
-    console.log(code, message);
+    console.log("Sign out error:", code, message);
     alert(message);
   }
 };
 
 // Add event listeners
-signUpBtn.addEventListener("click", signUp);
-signInBtn.addEventListener("click", signIn);
-signOutBtn.addEventListener("click", userSignOut);
+if (signUpBtn) {
+  signUpBtn.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent default form submission
+    signUp();
+  });
+}
+
+if (signInBtn) {
+  signInBtn.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent default form submission
+    signIn();
+  });
+}
+
+if (signOutBtn) {
+  signOutBtn.addEventListener("click", userSignOut);
+}
+
+// Panel toggle functions
+const signUpPanelBtn = document.getElementById("sign-up-btn");
+const signInPanelBtn = document.getElementById("sign-in-btn");
+
+if (signUpPanelBtn) {
+  signUpPanelBtn.addEventListener("click", () => {
+    document.querySelector(".container").classList.add("sign-up-mode");
+  });
+}
+
+if (signInPanelBtn) {
+  signInPanelBtn.addEventListener("click", () => {
+    document.querySelector(".container").classList.remove("sign-up-mode");
+  });
+}
+
+// Auth state listener
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log("User is signed in:", user);
+    document.getElementById('sign-out-btn').style.display = 'block'; // Show sign-out button
+  } else {
+    console.log("No user is signed in.");
+    document.getElementById('sign-out-btn').style.display = 'none'; // Hide sign-out button
+  }
+});
