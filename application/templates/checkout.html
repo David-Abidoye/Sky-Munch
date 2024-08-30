@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-sm-8 delivery_div">
             <h2>Delivery details</h2>
-            <form id="delivery_form" action="#">
+            <form id="delivery_form" action="/processing">
                 <input type="hidden" name="CSRFToken" value="{% block CSRFToken %}{{ CSRFToken }}{% endblock %}"> <!--CSRF Token --->
                 <h3>Customer Information</h3>
                 <div class="form-group">
