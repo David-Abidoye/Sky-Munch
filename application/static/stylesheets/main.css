@@ -107,6 +107,57 @@ h3 {
 
 
 
+.overlay-img {
+    position: absolute; 
+    top: 18.5%; 
+    right: 5%; 
+    width: 5%; 
+    height: 5%; 
+    opacity: 1; 
+    cursor: pointer; 
+}
+
+.overlay-img1 {
+    position: absolute; 
+    top: 31.1%; 
+    right: 5%; 
+    width: 5%; 
+    height: 5%; 
+    opacity: 1; 
+    cursor: pointer; 
+}
+
+.overlay-img2 {
+    position: absolute; 
+    top: 44.3%; 
+    right: 5%; 
+    width: 5%; 
+    height: 5%; 
+    opacity: 1; 
+    cursor: pointer; 
+}
+
+.overlay-img3 {
+    position: absolute; 
+    top: 60.5%; 
+    right: 5%; 
+    width: 5%; 
+    height: 5%; 
+    opacity: 1; 
+    cursor: pointer; 
+}
+
+.overlay-img4 {
+    position: absolute; 
+    top: 75.5%; 
+    right: 5%; 
+    width: 5%; 
+    height: 5%; 
+    opacity: 1; 
+    cursor: pointer; 
+}
+
+
 
 
 #supercontainer1 {
