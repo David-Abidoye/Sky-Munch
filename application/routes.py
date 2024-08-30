@@ -3,7 +3,7 @@ from flask import render_template, request, redirect, url_for, session
 from application import app
 
 
-app.secret_key = 'SkyMunch'
+app.secret_key = 'SkyMunch' # Replaced with a key that is stored external to codebase.
 
 @app.route('/')
 @app.route('/home')
