@@ -35,6 +35,14 @@ h2 {
     border-top: 1px;
 }
 
+label {
+    font-size: medium;
+}
+
+td {
+    font-size: medium;
+}
+
 
 @font-face {
     font-family: 'Sky Text';
