@@ -19,13 +19,11 @@ def menu():
 # Error handling routes
 @app.errorhandler(404)
 def page_not_found(e):
-    error = 404
-    return ErrorPage(error)
+    return ErrorPage(e.code)
 
 @app.errorhandler(500)
 def internal_server_error(e):
-    error = 500
-    return ErrorPage(error)
+    return ErrorPage(e.code)
 
 def ErrorPage(error):
     return render_template('error.html', title='Oopsie...', error_type=error), error
