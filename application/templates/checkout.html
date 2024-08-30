@@ -4,47 +4,49 @@
 <!--Container-->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-8 delivery_div">
             <h2>Delivery details</h2>
             <form id="delivery_form" action="#">
+                <h3>Customer Information</h3>
                 <div class="form-group">
                   <label for="email">Email for Order Confirmation *</label>
-                  <input type="email" class="form-control" id="email">
+                  <input type="email" class="form-control" id="email" name="email" required>
                 </div>
                 <div class="form-group">
                   <label for="first_name">First name *</label>
-                  <input type="text" class="form-control" id="first_name">
+                  <input type="text" class="form-control" id="first_name" name="first_name" required>
                 </div>
                 <div class="form-group">
                     <label for="last_name">Last name *</label>
-                    <input type="text" class="form-control" id="last_name">
+                    <input type="text" class="form-control" id="last_name" name="last_name" required>
                 </div>
                 <div class="form-group">
                     <label for="phone_no">Phone *</label>
-                    <input type="text" class="form-control" id="phone_no">
+                    <input type="tel" class="form-control" id="phone_no" name="phone_no" required>
                 </div>
+                <h3>Location</h3>
                 <div class="form-group">
                     <label for="building_name">Building Name *</label>
-                    <input type="text" class="form-control" id="building_name">
+                    <input type="text" class="form-control" id="building_name" name="building_name" required>
                   </div>
                   <div class="form-group">
                       <label for="floor">Floor (Ground, 1st, etc.)*</label>
-                      <input type="text" class="form-control" id="floor">
+                      <input type="text" class="form-control" id="floor" name="floor" required>
                   </div>
                   <div class="form-group">
-                      <label for="office_area">Office/Table No.</label>
-                      <input type="text" class="form-control" id="office_area">
+                      <label for="office_area">Office/Table No. *</label>
+                      <input type="text" class="form-control" id="office_area" name="office_area" required>
                   </div>
                   <div class="form-group">
                     <label for="additonal_info">Additional Information</label>
-                    <input type="text" class="form-control input-lg" id="additonal_info">
+                    <input type="text" class="form-control input-lg" id="additonal_info" name="additonal_info" placeholder="Notes about your order, e.g. special notes for delivery">
                   </div>
                 <div class="checkbox">
                   <label><input type="checkbox"> Remember me</label>
                 </div>
             </form>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4 order_div">
             <h2>Order Summary</h2>
             <a href="#menu" style="text-align: right;">Edit Cart</a>
             <table class="table table-no-bottom-border">
