@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-sm-8 delivery_div">
             <h2>Delivery details</h2>
-            <form id="delivery_form" action="#">
+            <form id="delivery_form" action="/processing" method="POST">
                 <h3>Customer Information</h3>
                 <div class="form-group">
                   <label for="email">Email for Order Confirmation *</label>
@@ -48,7 +48,7 @@
         </div>
         <div class="col-sm-4 order_div">
             <h2>Order Summary</h2>
-            <a href="#menu" style="text-align: right;">Edit Cart</a>
+            <a href="{{url_for('menu')}}" style="text-align: right;">Edit Cart</a>
             <table class="table table-no-bottom-border">
                 <tbody>
                     <tr>

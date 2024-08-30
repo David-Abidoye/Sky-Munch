@@ -7,7 +7,27 @@
         <div class="col-lg-8 left-container">
             <!-- add content for menu -->
             <a href="#"><img src="../static/images/Menu.png" class="Menu-img" width="100%" height = '100%' alt="Menu for Restaurant"></a>
+            <!-- overlay pics -->
+             <img src="../static/images/Add_to_order.png" class="overlay-img" id="triggerImage" alt="Overlay image">
+             <img src="../static/images/Add_to_order1.png" class="overlay-img1" alt="Overlay image">
+             <img src="../static/images/Add_to_order2.png" class="overlay-img2" alt="Overlay image">
+             <img src="../static/images/Add_to_order3.png" class="overlay-img3" alt="Overlay image">
+             <img src="../static/images/Add_to_order4.png" class="overlay-img4" alt="Overlay image">
         </div>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <!-- Modal Title -->
+                <h3 id="modalTitle">Order Confirmation</h3>
+                <br>
+                <!-- Modal Text Message -->
+                <p id="modalText">Your order has been successfully added to the cart!</p>
+            </div>
+        </div>
+
+
+
         <div class="col-lg-4 d-flex flex-column p-0">
             <div class="top-right-container">
                 <!-- Add content -->
@@ -15,8 +35,46 @@
             </div>
             <div class="bottom-right-container">
                 <!-- Add content -->
+                <br>
+                    <a href="#"><img src="../static/images/menu_checkout.png" class="Menu_checkout" width="100%" height="100%" alt="Menu checkout"></a>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <button class="button btn btn-primary">Checkout</button>
+                    <br>
+                    <br>    
+                    <button class="button btn btn-secondary">Cancel Order</button>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
+    
+    // Get the image that triggers the modal
+    var triggerImage = document.getElementById('triggerImage');
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName('close')[0];
+    
+    // When the specific overlay image is clicked, open the modal
+    triggerImage.onclick = function() {
+        modal.style.display = 'block'; // Show the modal
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = 'none';
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+    </script>
 {% endblock %}

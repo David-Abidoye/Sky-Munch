@@ -5,7 +5,7 @@
 } */
 
 :root {
-    --sky-gradient: linear-gradient(to right, #ff9e00 0%, red 35%, #b5007d 60%, #21429c 85%, #0071ff 100%); /* Gradient colors */
+    --sky-gradient: linear-gradient(#0071ff 100%); /* Gradient colors */
 }
 
 #container2{
@@ -76,6 +76,140 @@ h3 {
     color: #333; /* Darker text color */
     margin-bottom: 10px; /* Add space below headings */
 }
+
+
+.bottom-right-container{
+    padding: 10px;
+}
+
+.bottom-right-container .button{
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 35px 0;
+    border-radius: 15px;
+}
+
+.btn-primary{
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 15px;
+    font-size: 30px;
+}
+
+.btn-secondary{
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    border-radius: 15px;
+    font-size: 30px;
+}
+
+
+
+.overlay-img {
+    position: absolute; 
+    top: 18.5%; 
+    right: 5%; 
+    width: 5%; 
+    height: 5%; 
+    opacity: 1; 
+    cursor: pointer; 
+}
+
+.overlay-img1 {
+    position: absolute; 
+    top: 31.1%; 
+    right: 5%; 
+    width: 5%; 
+    height: 5%; 
+    opacity: 1; 
+    cursor: pointer; 
+}
+
+.overlay-img2 {
+    position: absolute; 
+    top: 44.3%; 
+    right: 5%; 
+    width: 5%; 
+    height: 5%; 
+    opacity: 1; 
+    cursor: pointer; 
+}
+
+.overlay-img3 {
+    position: absolute; 
+    top: 60.5%; 
+    right: 5%; 
+    width: 5%; 
+    height: 5%; 
+    opacity: 1; 
+    cursor: pointer; 
+}
+
+.overlay-img4 {
+    position: absolute; 
+    top: 75.5%; 
+    right: 5%; 
+    width: 5%; 
+    height: 5%; 
+    opacity: 1; 
+    cursor: pointer; 
+}
+
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.4); 
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 600px; 
+    height: 30%;
+    max-height: 300px;
+    border-radius: 8px; 
+}
+
+/* Title Styling */
+#modalTitle {
+    margin-top: 0;
+    color: #333; 
+    font-size: 44px;
+}
+
+#modalText {
+    font-size: 28px; 
+    color: #333; 
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
 
 
 #supercontainer1 {
@@ -198,7 +332,14 @@ footer hr {
     width:  95%; /* Responsive width for search bar */
     margin-right: 10px;
     margin-bottom: 5px;
-}
+    }
+
+    .bottom-right-container .button{
+        flex: 1;
+        width: 100%;
+    }
+
+    
 }
 
 
