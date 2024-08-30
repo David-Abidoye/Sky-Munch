@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!--Container-->
+<div class="container-fluid">
+    <h2>Thank You for Your Order, {{ data['first_name'] }}!</h2>
+    <p>We have received the following details:</p>
+    <ul>
+        <li>Email: {{ data['email'] }}</li>
+        <li>First Name: {{ data['first_name'] }}</li>
+        <li>Last Name: {{ data['last_name'] }}</li>
+        <li>Phone: {{ data['phone_no'] }}</li>
+        <li>Building Name: {{ data['building_name'] }}</li>
+        <li>Floor: {{ data['floor'] }}</li>
+        <li>Office/Table No.: {{ data['office_area'] }}</li>
+        <li>Additional Information: {{ data['additional_info'] }}</li>
+    </ul>
+</div>
+{% endblock %}
