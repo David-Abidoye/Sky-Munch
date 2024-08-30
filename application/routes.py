@@ -3,6 +3,7 @@ from flask import render_template, request, redirect, url_for, session
 from application import app
 
 from random import randint
+import html
 
 app.secret_key = 'SkyMunch' # Replaced with a key that is stored external to codebase.
 
@@ -25,6 +26,11 @@ def checkout():
     session['CSRFToken'] = str(randint(1<<15, (1<<16)-1))
     return render_template('checkout.html', title='Complete Your Purchase', css='checkout', CSRFToken=session['CSRFToken'])
 
+def sanitize_input(input):
+    if type(input) == str:
+        return html.escape(input)
+    return input
+
 @app.route('/processing', methods=['GET', 'POST'])
 def processing():
     if request.method != 'POST':
@@ -34,14 +40,14 @@ def processing():
         session.clear()
         return redirect('/error')
 
-    session['email'] = request.form.get('email')
-    session['first_name'] = request.form.get('first_name')
-    session['last_name'] = request.form.get('last_name')
-    session['phone_no'] = request.form.get('phone_no')
-    session['building_name'] = request.form.get('building_name')
-    session['floor'] = request.form.get('floor')
-    session['office_area'] = request.form.get('office_area')
-    session['additional_info'] = request.form.get('additional_info')
+    session['email'] = sanitize_input(request.form.get('email'))
+    session['first_name'] = sanitize_input(request.form.get('first_name'))
+    session['last_name'] = sanitize_input(request.form.get('last_name'))
+    session['phone_no'] = sanitize_input(request.form.get('phone_no'))
+    session['building_name'] = sanitize_input(request.form.get('building_name'))
+    session['floor'] = sanitize_input(request.form.get('floor'))
+    session['office_area'] = sanitize_input(request.form.get('office_area'))
+    session['additional_info'] = sanitize_input(request.form.get('additional_info'))
     return redirect(url_for('form_data_display'))
 
 @app.route('/form_data_display')
