@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* #container1{
     height: 380px;
 } */

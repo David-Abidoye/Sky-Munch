@@ -1,7 +1,71 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<!--Container-->
 
+<!-- First "Slide" Container -->
+<div class="container-fluid" id="slide1"
+style="margin: 5%;
+margin-bottom: 500px; /* Last 'slide' does not need this */
+padding-bottom: 10%;
+border-radius: 10px;
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.473);
+padding: 50px;
+min-height: 75vh;
+display: flex;
+flex-direction: column;
+justify-content: center;">
+    <div class="row" style="flex: 1; display: flex; align-items: center;">
+        <!-- Text Container -->
+        <div id="container1" class="col-sm-8">
+            <h1 id="welcometext" class="text-left">Want to know about <b>Sky Munch?</b></h1>
+            <br>
+            <p>The all in one solution for our hungriest of colleagues!</p>
+        </div>
+        <!-- Image Container -->
+        <div id="container3" class="col-sm-4">
+            <a href="#slide2"><img src="../static/images/Munch (Square).png" alt="Sky Munch Logo"></a>
+            <p style="text-align: right;
+            font-family: Sky Text;
+            font-weight: normal;
+            font-size: larger;
+            padding-top: 15px;
+            padding-right: 50px;">
+            A showcase project by<br>David, Douglas, Kamran, Romario, and Samuel.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Second "Slide" Container -->
+<div class="container-fluid" id="slide2"
+style="margin: 5%;
+margin-bottom: 500px; /* Last 'slide' does not need this */
+padding-bottom: 10%;
+border-radius: 10px;
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.473);
+padding: 50px;
+min-height: 75vh;
+display: flex;
+flex-direction: column;
+justify-content: center;">
+    <div class="row" style="flex: 1; display: flex; align-items: center;">
+        <!-- Image Container -->
+        <div id="container3" class="col-sm-4">
+            <a href="#slide3"><img src="../static/images/Munch (Square).png" alt="Sky Munch Logo"></a>
+            <p style="text-align: right;
+            font-family: Sky Text;
+            font-weight: normal;
+            font-size: larger;
+            padding-top: 15px;
+            padding-right: 50px;">
+            A showcase project by<br>David, Douglas, Kamran, Romario, and Samuel.</p>
+        </div>
+        <!-- Text Container -->
+        <div id="container1" class="col-sm-8">
+            <h1 id="welcometext" class="text-left">Want to know about <b>Sky Munch?</b></h1>
+            <br>
+            <p>The all in one solution for our hungriest of colleagues!</p>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
