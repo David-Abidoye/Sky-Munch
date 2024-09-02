@@ -1,6 +1,7 @@
-from flask import render_template, request, redirect, url_for, session
+from flask import render_template, request, redirect, url_for, session, jsonify
 
 from application import app
+from application.restaurant_data import restaurants
 
 from random import randint
 import html
@@ -65,3 +66,12 @@ def internal_server_error(e):
 
 def ErrorPage(error):
     return render_template('error.html', title='Oopsie...', css='main', error_type=error), error
+
+
+@app.route('/search_suggestions', methods=['GET'])
+def search_suggestions():
+    query = request.args.get('query', '').lower()
+    # Filter restaurants whose names contain the search query
+    suggestions = [r for r in restaurants if query in r['name'].lower()]
+    return jsonify(suggestions)
+
