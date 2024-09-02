@@ -27,6 +27,10 @@ def checkout():
     session['CSRFToken'] = str(randint(1<<15, (1<<16)-1))
     return render_template('checkout.html', title='Complete Your Purchase', css='checkout', CSRFToken=session['CSRFToken'])
 
+@app.route('/about')
+def about():
+    return render_template('about.html', title='About Sky Munch', css='main')
+
 def sanitize_input(input):
     if type(input) == str:
         return html.escape(input)
