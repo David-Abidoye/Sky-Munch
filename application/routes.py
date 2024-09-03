@@ -21,7 +21,6 @@ def login():
 def menu():
     return render_template('menu.html', title='Check the Menu', css='main')
 
-
 @app.route('/checkout')
 def checkout():
     session['CSRFToken'] = str(randint(1<<15, (1<<16)-1))

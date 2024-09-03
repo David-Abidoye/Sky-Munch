@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/df0a3e9353.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/stylesheets/login.css" />
-    <title>Sign in & Sign up Form</title>
+    <title>Sign In</title>
+
+    <!--Favicons-->
+    <link rel="manifest" href="../static/favicon/site.webmanifest">
+    <link rel="icon" href="../static/favicon/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../static/favicon/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/favicon/apple-touch-icon.png">
 </head>
 <body>
     <button id="sign-out-btn" style="display: none;">Sign Out</button>
@@ -25,17 +33,17 @@
                     <input type="submit" value="Login" class="btn solid" />
                     <p class="social-text">Or Sign in with social platforms</p>
                     <div class="social-media">
-                        <a href="#" class="social-icon">
+                        <a href="#" id="facebook-sign-in-btn" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="#" class="social-icon">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="social-icon">
+                        <a href="#" id="google-sign-in-btn" class="social-icon">
                             <i class="fab fa-google"></i>
                         </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
+                        <a href="#" id="github-sign-in-btn" class="social-icon">
+                            <i class="fab fa-github"></i>
                         </a>
                     </div>
                 </form>
@@ -63,7 +71,7 @@
                             <i class="fab fa-google"></i>
                         </a>
                         <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
+                            <i class="fab fa-github"></i>
                         </a>
                     </div>
                 </form>
