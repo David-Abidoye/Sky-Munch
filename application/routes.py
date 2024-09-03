@@ -13,6 +13,13 @@ app.secret_key = 'SkyMunch' # Replaced with a key that is stored external to cod
 def home():
     return render_template('index.html', title='Sky Munch!', css='main')
 
+@app.route('/search_suggestions', methods=['GET'])
+def search_suggestions():
+    query = request.args.get('query', '').lower()
+    # Filter restaurants whose names contain the search query
+    suggestions = [r for r in restaurants if query in r['name'].lower()]
+    return jsonify(suggestions)
+
 @app.route('/login')
 def login():
     return render_template('login.html')
@@ -65,12 +72,3 @@ def internal_server_error(e):
 
 def ErrorPage(error):
     return render_template('error.html', title='Oopsie...', css='main', error_type=error), error
-
-
-@app.route('/search_suggestions', methods=['GET'])
-def search_suggestions():
-    query = request.args.get('query', '').lower()
-    # Filter restaurants whose names contain the search query
-    suggestions = [r for r in restaurants if query in r['name'].lower()]
-    return jsonify(suggestions)
-
