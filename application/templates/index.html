@@ -8,8 +8,9 @@
             <h1 id="welcometext" class="text-left">Welcome to <b>Sky Munch!</b></h1>
             <br>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search Restaurants" aria-label="Search Restaurants" >
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search Restaurants" aria-label="Search Restaurants" id="searchInput" onkeyup="fetchSuggestions()" autocomplete="off">
+                <ul id="suggestions"></ul>
+                <p id="no-results" style="display: none;">No restaurants found.</p>
             </form>
             <br>
             <p>Fuel your productivity without skipping a beat. Sky Munch is your go-to destination for delicious meals delivered right to your desk, so you can keep powering through your workday with ease.</p>
@@ -31,20 +32,58 @@
     <div class="row">
         <div class="col-sm-3">
             <h3>The Pavilion</h3>
-            <a href="#"><img src="../static/images/Pavilion.png" class="pav-restaurant" width="100%" alt="Pavilion Restaurant"></a>
+            <a href="{{url_for('menu')}}"><img src="../static/images/Pavilion.png" class="pav-restaurant" width="100%" alt="Pavilion Restaurant"></a>
         </div>
         <div class="col-sm-3">
             <h3>The Dining Room</h3>
-            <a href="#"><img src="../static/images/The Dining Room.png" class="din-restaurant" width="100%" alt="The Dining Room Restaurant"></a>
+            <a href="{{url_for('menu')}}"><img src="../static/images/The Dining Room.png" class="din-restaurant" width="100%" alt="The Dining Room Restaurant"></a>
         </div>
         <div class="col-sm-3">
             <h3>The Garden</h3>
-            <a href="#"><img src="../static/images/The Garden.png" class="garden-restaurant" width="100%" alt="The Garden Restaurant"></a>
+            <a href="{{url_for('menu')}}"><img src="../static/images/The Garden.png" class="garden-restaurant" width="100%" alt="The Garden Restaurant"></a>
         </div>
         <div class="col-sm-3">
             <h3>The Restaurant</h3>
-            <a href="#"><img src="../static/images/The Restaurant.png" class="res-restaurant" width="100%" alt="The Restaurant"></a>
+            <a href="{{url_for('menu')}}"><img src="../static/images/The Restaurant.png" class="res-restaurant" width="100%" alt="The Restaurant"></a>
         </div>  
     </div>
 </div>
+
+<script>
+    function fetchSuggestions() {
+        const query = document.getElementById('searchInput').value;
+
+        document.getElementById('suggestions').innerHTML = '';
+        document.getElementById('no-results').style.display = 'none';
+
+        if (query.length > 0) {
+                fetch(`/search_suggestions?query=${query}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const suggestions = document.getElementById('suggestions');
+
+                        if (data.length > 0) {
+                            // Populate the suggestions dropdown
+                            data.forEach(restaurant => {
+                                const li = document.createElement('li');
+                                li.textContent = restaurant.name;
+                                li.onclick = () => {
+                                    // Redirect to restaurant menu page when clicked
+                                    window.location.href = `/menu`;
+                                };
+                                suggestions.appendChild(li);
+                            });
+                        } else {
+                            // Show "No restaurants found" message if no matches are found
+                            document.getElementById('no-results').style.display = 'block';
+                        }
+                    });
+        } else {
+            // Clear suggestions if the input is empty
+            // Clear suggestions and hide the "No results" message if the input is empty
+            document.getElementById('suggestions').innerHTML = '';
+            document.getElementById('no-results').style.display = 'none';
+        }
+    }
+</script>
 {% endblock %}

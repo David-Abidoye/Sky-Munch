@@ -6,6 +6,14 @@
     <title>{% block title %}{{ title }}{% endblock %}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/stylesheets/{% block css %}{{ css }}{% endblock %}.css">
+
+    <!--Favicons-->
+    <link rel="manifest" href="../static/favicon/site.webmanifest">
+    <link rel="icon" href="../static/favicon/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../static/favicon/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/favicon/apple-touch-icon.png">
 </head>
 <body>
     <!-- Banner at top of screen -->
@@ -21,8 +29,8 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-log-in"></span>LOGIN/SIGNUP</a></li>
-                    <li><a href="#checkout"><span class="glyphicon glyphicon-shopping-cart"></span>CHECKOUT</a></li>
+                    <li><a href='/login'><span class="glyphicon glyphicon-log-in"></span>LOGIN/SIGNUP</a></li>
+                    <li><a href='/checkout'><span class="glyphicon glyphicon-shopping-cart"></span>CHECKOUT</a></li>
                     <li><a href="#profile"><span class="glyphicon glyphicon-user"></span>PROFILE</a></li>
                 </ul>
             </div>
