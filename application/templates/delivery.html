@@ -13,7 +13,11 @@
                 <li>Floor: {{ data['floor'] }}</li>
                 <li>Office/Table No.: {{ data['office_area'] }}</li>
                 <li>Additional Information: {{ data['additional_info'] }}</li>
-            </ul>
+                {% if data['remember'] == None %}
+                    <br>
+                    <p>Please remain on this page until your order arrives.</p>
+                {% endif %}
+                </ul>
 
             <!-- Add the new GIF above the Progress Bar -->
             <div class="gif-container">

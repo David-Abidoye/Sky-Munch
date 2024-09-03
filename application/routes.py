@@ -16,7 +16,16 @@ initialize_app(cred)
 @app.route('/')
 @app.route('/home')
 def home():
+    if not session.get('remember'):
+        session.clear()
     return render_template('index.html', title='Sky Munch!', css='main')
+
+@app.route('/search_suggestions', methods=['GET'])
+def search_suggestions():
+    query = request.args.get('query', '').lower()
+    # Filter restaurants whose names contain the search query
+    suggestions = [r for r in restaurants if query in r['name'].lower()]
+    return jsonify(suggestions)
 
 @app.route('/verify-token', methods=['POST'])
 def verify_token():
@@ -61,7 +70,6 @@ def clear_session():
 def menu():
     return render_template('menu.html', title='Check the Menu', css='main')
 
-
 @app.route('/checkout')
 def checkout():
     print("Session data before redirecting to checkout:", session)
@@ -72,6 +80,10 @@ def checkout():
     session['CSRFToken'] = str(randint(1<<15, (1<<16)-1))
     print(f"CSRF Token set: {session['CSRFToken']}")
     return render_template('checkout.html', title='Complete Your Purchase', css='checkout', CSRFToken=session['CSRFToken'])
+
+@app.route('/about')
+def about():
+    return render_template('about.html', title='About Sky Munch', css='main')
 
 def sanitize_input(input):
     if type(input) == str:  
@@ -95,10 +107,14 @@ def processing():
     session['floor'] = sanitize_input(request.form.get('floor'))
     session['office_area'] = sanitize_input(request.form.get('office_area'))
     session['additional_info'] = sanitize_input(request.form.get('additional_info'))
+    session['remember'] = request.form.get('remember')
     return redirect(url_for('delivery'))
 
 @app.route('/delivery')
 def delivery():
+    if not session.get('first_name'):
+        return redirect(url_for('menu'))
+
     return render_template('delivery.html', data=session, title='Check on Delivery', css='main')
 
 # Error handling routes
@@ -112,12 +128,3 @@ def internal_server_error(e):
 
 def ErrorPage(error):
     return render_template('error.html', title='Oopsie...', css='main', error_type=error), error
-
-
-@app.route('/search_suggestions', methods=['GET'])
-def search_suggestions():
-    query = request.args.get('query', '').lower()
-    # Filter restaurants whose names contain the search query
-    suggestions = [r for r in restaurants if query in r['name'].lower()]
-    return jsonify(suggestions)
-
