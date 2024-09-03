@@ -4,6 +4,10 @@ html {
     scroll-behavior: smooth;
 }
 
+.slide {
+    scroll-margin-top: 10vh;
+}
+
 /* #container1{
     height: 380px;
 } */
