@@ -1,4 +1,5 @@
-from flask import render_template, request, redirect, url_for, session, jsonify
+from flask import render_template, request, redirect, url_for, session, jsonify, session
+from firebase_admin import auth, credentials, initialize_app
 
 from application import app
 from application.restaurant_data import restaurants
@@ -8,14 +9,53 @@ import html
 
 app.secret_key = 'SkyMunch' # Replaced with a key that is stored external to codebase.
 
+#initialise Firebase Admin SDK
+cred = credentials.Certificate('./firebase-adminsdk.json')
+initialize_app(cred)
+
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template('index.html', title='Sky Munch!', css='main')
 
+@app.route('/verify-token', methods=['POST'])
+def verify_token():
+    data = request.get_json()
+    if not data:
+        return jsonify({'error': 'Invalid JSON'}), 400
+
+    id_token = data.get('idToken')
+    if not id_token:
+        return jsonify({'error': 'ID Token missing'}), 400
+
+    print(f"Received ID Token: {id_token}")
+
+    try:
+        decoded_token = auth.verify_id_token(id_token)
+        uid = decoded_token['uid']
+        print(f"UID from token: {uid}")
+
+        session['user'] = {
+            'uid': uid,
+            'email': decoded_token['email']
+        }
+
+        return jsonify({'status': 'success'}), 200
+
+    except Exception as e:
+        print(f"Error verifying token: {e}")
+        return jsonify({'error': str(e)}), 401
+
 @app.route('/login')
 def login():
     return render_template('login.html')
+
+@app.route('/clear-session', methods=['POST'])
+def clear_session():
+    session.clear()
+    print("Session cleared")
+    return jsonify({'status': 'success'}), 200
+
 
 @app.route('/menu')
 def menu():
@@ -24,11 +64,17 @@ def menu():
 
 @app.route('/checkout')
 def checkout():
+    print("Session data before redirecting to checkout:", session)
+    if 'user' not in session:
+        print("User not in session, redirecting to login")
+        return redirect('/login') # redirect to login if not logged in
+
     session['CSRFToken'] = str(randint(1<<15, (1<<16)-1))
+    print(f"CSRF Token set: {session['CSRFToken']}")
     return render_template('checkout.html', title='Complete Your Purchase', css='checkout', CSRFToken=session['CSRFToken'])
 
 def sanitize_input(input):
-    if type(input) == str:
+    if type(input) == str:  
         return html.escape(input)
     return input
 

@@ -29,7 +29,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href='/login'><span class="glyphicon glyphicon-log-in"></span>LOGIN/SIGNUP</a></li>
+                    <li id="auth-btn"><a href="#" id="auth-link"><span class="glyphicon glyphicon-log-in"></span> LOGIN/SIGNUP</a></li> 
                     <li><a href='/checkout'><span class="glyphicon glyphicon-shopping-cart"></span>CHECKOUT</a></li>
                     <li><a href="#profile"><span class="glyphicon glyphicon-user"></span>PROFILE</a></li>
                 </ul>
@@ -49,5 +49,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="module" src="{{ url_for('static', filename='scripts/auth.js') }}"></script>
 </body>
 </html>

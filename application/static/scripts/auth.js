@@ -10,11 +10,10 @@ import {
   GoogleAuthProvider,
   FacebookAuthProvider,
   GithubAuthProvider,
-
 } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
 
 // Define the Firebase configuration object
-import { firebaseConfig } from './config.js';
+import { firebaseConfig } from "./config.js";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -24,10 +23,18 @@ const provider2 = new FacebookAuthProvider();
 const provider3 = new GithubAuthProvider();
 
 // Cache the DOM elements
-const signInEmailInput = document.querySelector(".sign-in-form .input-field input[type='email']");
-const signInPasswordInput = document.querySelector(".sign-in-form .input-field input[type='password']");
-const signUpEmailInput = document.querySelector(".sign-up-form .input-field input[type='email']");
-const signUpPasswordInput = document.querySelector(".sign-up-form .input-field input[type='password']");
+const signInEmailInput = document.querySelector(
+  ".sign-in-form .input-field input[type='email']"
+);
+const signInPasswordInput = document.querySelector(
+  ".sign-in-form .input-field input[type='password']"
+);
+const signUpEmailInput = document.querySelector(
+  ".sign-up-form .input-field input[type='email']"
+);
+const signUpPasswordInput = document.querySelector(
+  ".sign-up-form .input-field input[type='password']"
+);
 const signUpBtn = document.querySelector(".sign-up-form .btn");
 const signInBtn = document.querySelector(".sign-in-form .btn");
 const signOutBtn = document.getElementById("sign-out-btn");
@@ -68,34 +75,61 @@ const signIn = async () => {
       signInPassword
     );
     const user = userCredential.user;
+    const idToken = await user.getIdToken(); // Retrieve Firebase ID token
     console.log("User signed in:", user);
-    alert("User signed in successfully");
-    window.location.href = "/"; // Redirect to the homepage
+
+    // Send ID token to the backend
+    console.log("Sending ID token to /verify-token");
+    const response = await fetch("/verify-token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ idToken }),
+    });
+
+    console.log("Response status:", response.status);
+    if (response.ok) {
+      window.location.href = "/";
+    } else {
+      alert("Session setup failed!");
+    }
   } catch (error) {
-    const { code, message } = error;
-    console.log("Sign in error:", code, message);
-    alert(message);
+    console.log("Sign in error:", error);
+    alert(error.message);
   }
 };
 
 //Google sign in function
 const signInWithGoogle = async () => {
   try {
-    // Force Firebase to allow for account selection every time you sign in
-    provider.setCustomParameters({
-      prompt: 'select_account'
-    });
+    provider.setCustomParameters({ prompt: "select_account" });
 
     console.log("Attempting to sign in with Google...");
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
-    console.log("Google Sign-In successful:", user);
-    alert("Signed in with Google successfully!");
-    window.location.href = "/"; // Redirect to the homepage
+    const idToken = await user.getIdToken(); // Retrieve Firebase ID token
+
+    console.log("User signed in:", user);
+
+    console.log("Sending ID token to /verify-token");
+    const response = await fetch("/verify-token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ idToken }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Server error: ${errorText}`);
+    }
+
+    window.location.href = "/";
   } catch (error) {
-    const { code, message } = error;
-    console.log("Google Sign-In error:", code, message);
-    alert(message);
+    console.error("Google Sign-In error:", error);
+    alert(`An error occurred: ${error.message}`);
   }
 };
 
@@ -104,7 +138,7 @@ const signInWithGithub = async () => {
   try {
     // Force Firebase to allow for account selection every time you sign in
     provider.setCustomParameters({
-      prompt: 'select_account'
+      prompt: "select_account",
     });
 
     console.log("Attempting to sign in with Github...");
@@ -112,7 +146,20 @@ const signInWithGithub = async () => {
     const user = result.user;
     console.log("Github Sign-In successful:", user);
     alert("Signed in with Github successfully!");
-    window.location.href = "/"; // Redirect to the homepage
+    console.log("Sending ID token to /verify-token");
+    const response = await fetch("/verify-token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ idToken }),
+    });
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Server error: ${errorText}`);
+    }
+
+    window.location.href = "/";
   } catch (error) {
     const { code, message } = error;
     console.log("Github Sign-In error:", code, message);
@@ -138,9 +185,21 @@ const signInWithFacebook = async () => {
 // Signout function
 const userSignOut = async () => {
   try {
+    // Sign out from Firebase
     await signOut(auth);
-    console.log("User signed out");
+    console.log("User signed out from Firebase");
+
+    // Clear server-side session
+    await fetch("/clear-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    // Redirect or inform user
     alert("User signed out successfully");
+    window.location.href = "/login";
   } catch (error) {
     const { code, message } = error;
     console.log("Sign out error:", code, message);
@@ -213,13 +272,28 @@ if (signInPanelBtn) {
   });
 }
 
-// Auth state listener
+// Auth state listener 
 onAuthStateChanged(auth, (user) => {
+  const authLink = document.getElementById("auth-link");
+
   if (user) {
-    console.log("User is signed in:", user);
-    document.getElementById('sign-out-btn').style.display = 'block'; // Show sign-out button
+    authLink.innerHTML =
+      '<span class="glyphicon glyphicon-log-out"></span> SIGN OUT';
+    authLink.setAttribute("href", "javascript:void(0);");
+    authLink.onclick = async () => {
+      try {
+        await signOut(auth);
+        alert("User signed out successfully");
+        window.location.href = "/login"; 
+      } catch (error) {
+        console.log("Sign out error:", error.message);
+        alert(error.message);
+      }
+    };
   } else {
-    console.log("No user is signed in.");
-    document.getElementById('sign-out-btn').style.display = 'none'; // Hide sign-out button
+    authLink.innerHTML =
+      '<span class="glyphicon glyphicon-log-in"></span> LOGIN/SIGNUP';
+    authLink.setAttribute("href", "/login");
+    authLink.onclick = null;
   }
 });
