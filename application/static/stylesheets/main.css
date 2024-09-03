@@ -18,42 +18,42 @@
 
 @font-face {
     font-family: 'Sky Text';
-    src: url('../fonts/SkyText_Regular.ttf') format(truetype);
-    font-weight: normal;
+    src: url('../fonts/SkyText_Regular.ttf') format('truetype');
+    font-weight: 400; /* normal */
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Sky Text';
-    src: url('../fonts/SkyText_Light.ttf') format(truetype);
-    font-weight: light;
+    src: url('../fonts/SkyText_Light.ttf') format('truetype');
+    font-weight: 300; /* light */
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Sky Text';
-    src: url('../fonts/SkyText_Medium.ttf') format(truetype);
-    font-weight: medium;
+    src: url('../fonts/SkyText_Medium.ttf') format('truetype');
+    font-weight: 500; /* medium */
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Sky Text';
-    src: url('../fonts/SkyText_Bold.ttf') format(truetype);
-    font-weight: bold;
+    src: url('../fonts/SkyText_Bold.ttf') format('truetype');
+    font-weight: 700; /* bold */
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Sky Text';
-    src: url('../fonts/SkyText_Italic.ttf') format(truetype);
-    font-weight: normal;
+    src: url('../fonts/SkyText_Italic.ttf') format('truetype');
+    font-weight: 400; /* normal */
     font-style: italic;
 }
 
 body {
-    font-family: "Abel", 'Century Gothic', 'Gothic', sans-serif;
-    font-weight: 400;
+    font-family: "Sky Text", "Abel", 'Century Gothic', 'Gothic', sans-serif;
+    font-weight: light;
     font-style: normal;
     background-color: #FAFAFA; /* Light background color for the whole page */
 }
@@ -443,8 +443,8 @@ footer hr {
 
 /* circles and text */
 .circle {
-    width: 70px; /* Increased width for larger circles */
-    height: 70px; /* Increased height for larger circles */
+    width: 78px; /* Increased width for larger circles */
+    height: 78px; /* Increased height for larger circles */
     border-radius: 50%;
     background-color: #fff;
     border: 5px solid #d3d3d3; /* Thicker border */
