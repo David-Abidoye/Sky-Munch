@@ -11,6 +11,8 @@ app.secret_key = 'SkyMunch' # Replaced with a key that is stored external to cod
 @app.route('/')
 @app.route('/home')
 def home():
+    if not session.get('remember'):
+        session.clear()
     return render_template('index.html', title='Sky Munch!', css='main')
 
 @app.route('/search_suggestions', methods=['GET'])
@@ -59,10 +61,14 @@ def processing():
     session['floor'] = sanitize_input(request.form.get('floor'))
     session['office_area'] = sanitize_input(request.form.get('office_area'))
     session['additional_info'] = sanitize_input(request.form.get('additional_info'))
+    session['remember'] = request.form.get('remember')
     return redirect(url_for('delivery'))
 
 @app.route('/delivery')
 def delivery():
+    if not session.get('first_name'):
+        return redirect(url_for('menu'))
+
     return render_template('delivery.html', data=session, title='Check on Delivery', css='main')
 
 # Error handling routes
