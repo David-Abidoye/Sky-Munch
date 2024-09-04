@@ -49,7 +49,7 @@ def verify_token():
             'email': decoded_token['email']
         }
 
-        return jsonify({'status': 'success'}), 200
+        return jsonify({'status': 'success', 'redirect': '/checkout'}), 200
 
     except Exception as e:
         print(f"Error verifying token: {e}")

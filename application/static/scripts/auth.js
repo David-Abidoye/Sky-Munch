@@ -58,12 +58,33 @@ const signUp = async () => {
     const user = userCredential.user;
     console.log("User signed up:", user);
     alert("User created successfully");
+
+    const idToken = await user.getIdToken(); // Retrieve Firebase ID token
+
+    // Send ID token to the backend
+    console.log("Sending ID token to /verify-token");
+    const response = await fetch("/verify-token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ idToken }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      window.location.href = data.redirect || "/"; // Redirect to checkout if specified
+    } else {
+      alert("Session setup failed!");
+    }
   } catch (error) {
     const { code, message } = error;
     console.log("Sign up error:", code, message);
     alert(message);
   }
 };
+
 // Signin function
 const signIn = async () => {
   const signInEmail = signInEmailInput.value;
@@ -88,9 +109,10 @@ const signIn = async () => {
       body: JSON.stringify({ idToken }),
     });
 
-    console.log("Response status:", response.status);
+    const data = await response.json();
+
     if (response.ok) {
-      window.location.href = "/";
+      window.location.href = data.redirect || "/"; // Redirect to checkout if specified
     } else {
       alert("Session setup failed!");
     }
