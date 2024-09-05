@@ -13,9 +13,17 @@ app.secret_key = 'SkyMunch' # Replaced with a key that is stored external to cod
 cred = credentials.Certificate('./firebase-adminsdk.json')
 initialize_app(cred)
 
+
 @app.route('/')
 @app.route('/home')
 def home():
+    if session:
+        print("Session data at /home route:")
+        for key, value in session.items():
+            print(f"  {key}: {value}")
+    else:
+        print("Session is empty at /home route")
+
     if not session.get('remember'):
         session.clear()
     return render_template('index.html', title='Sky Munch!', css='main')
@@ -57,6 +65,12 @@ def verify_token():
 
 @app.route('/login')
 def login():
+    if session:
+        print("Session data at /login route:")
+        for key, value in session.items():
+            print(f"  {key}: {value}")
+    else:
+        print("Session is empty at /login route")
     return render_template('login.html')
 
 @app.route('/clear-session', methods=['POST'])
@@ -72,13 +86,22 @@ def menu():
 
 @app.route('/checkout')
 def checkout():
-    print("Session data before redirecting to checkout:", session)
+    if session:
+        print("Session data at /checkout route:")
+        for key, value in session.items():
+            print(f"  {key}: {value}")
+    else:
+        print("Session is empty at /checkout route")    # Check if the user is logged in by verifying if 'user' is in session
     if 'user' not in session:
+        # If user is not in session, redirect to the login page
         print("User not in session, redirecting to login")
-        return redirect('/login') # redirect to login if not logged in
-
+        return redirect('/login')
+    
+    # # Generate CSRF token for additional security and set it in session
     session['CSRFToken'] = str(randint(1<<15, (1<<16)-1))
     print(f"CSRF Token set: {session['CSRFToken']}")
+    
+    # Render the checkout page if user is authenticated
     return render_template('checkout.html', title='Complete Your Purchase', css='checkout', CSRFToken=session['CSRFToken'])
 
 @app.route('/about')

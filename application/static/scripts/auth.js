@@ -37,7 +37,6 @@ const signUpPasswordInput = document.querySelector(
 );
 const signUpBtn = document.querySelector(".sign-up-form .btn");
 const signInBtn = document.querySelector(".sign-in-form .btn");
-const signOutBtn = document.getElementById("sign-out-btn");
 
 //Caching the DOM elements for Social Media Authentication:
 const facebookSignInBtn = document.querySelector(".social-icon .facebook-btn");
@@ -74,7 +73,7 @@ const signUp = async () => {
     const data = await response.json();
 
     if (response.ok) {
-      window.location.href = data.redirect || "/"; // Redirect to checkout if specified
+      window.location.href = data.redirect || "/"; // Redirect to homepage if specified
     } else {
       alert("Session setup failed!");
     }
@@ -112,7 +111,7 @@ const signIn = async () => {
     const data = await response.json();
 
     if (response.ok) {
-      window.location.href = data.redirect || "/"; // Redirect to checkout if specified
+      window.location.href = data.redirect || "/";
     } else {
       alert("Session setup failed!");
     }
@@ -244,10 +243,6 @@ if (signInBtn) {
   });
 }
 
-if (signOutBtn) {
-  signOutBtn.addEventListener("click", userSignOut);
-}
-
 // Google Sign-In button event listener
 if (googleSignInBtn) {
   googleSignInBtn.addEventListener("click", (event) => {
@@ -294,28 +289,24 @@ if (signInPanelBtn) {
   });
 }
 
-// Auth state listener 
-onAuthStateChanged(auth, (user) => {
+// Auth state listener
+const updateAuthUI = (user) => {
   const authLink = document.getElementById("auth-link");
-
   if (user) {
+    // User is signed in
     authLink.innerHTML =
       '<span class="glyphicon glyphicon-log-out"></span> SIGN OUT';
     authLink.setAttribute("href", "javascript:void(0);");
-    authLink.onclick = async () => {
-      try {
-        await signOut(auth);
-        alert("User signed out successfully");
-        window.location.href = "/login"; 
-      } catch (error) {
-        console.log("Sign out error:", error.message);
-        alert(error.message);
-      }
-    };
+    // Remove any previous click event listeners to avoid duplication
+    authLink.addEventListener("click", userSignOut);
   } else {
-    authLink.innerHTML =
-      '<span class="glyphicon glyphicon-log-in"></span> LOGIN/SIGNUP';
+    // User is signed out
     authLink.setAttribute("href", "/login");
-    authLink.onclick = null;
+    authLink.removeEventListener("click", userSignOut);
   }
+};
+
+// Auth state listener
+onAuthStateChanged(auth, (user) => {
+  updateAuthUI(user);
 });
